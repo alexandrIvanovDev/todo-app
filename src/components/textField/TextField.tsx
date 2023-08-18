@@ -1,5 +1,7 @@
 import cl from './TextField.module.css'
-import {ChangeEvent, FC, useState} from 'react';
+import {ChangeEvent, FC, useState, KeyboardEvent} from 'react';
+import {useDispatch} from 'react-redux';
+import {addTask} from '../../store/reducers/todo.ts';
 
 type PropsType = {
     value?: string
@@ -7,8 +9,10 @@ type PropsType = {
 }
 
 export const TextField: FC<PropsType> = ({value, checked}) => {
-    const [inputValue, setInputValue] = useState(value)
+    const [inputValue, setInputValue] = useState(value || '')
     const [isChecked, setIsChecked] = useState(checked)
+
+    const dispatch = useDispatch()
 
     const onInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.currentTarget.value)
@@ -16,6 +20,13 @@ export const TextField: FC<PropsType> = ({value, checked}) => {
 
     const onCheckboxHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setIsChecked(e.currentTarget.checked)
+    }
+
+    const onAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            dispatch(addTask(inputValue))
+            setInputValue('')
+        }
     }
 
     return (
@@ -32,6 +43,7 @@ export const TextField: FC<PropsType> = ({value, checked}) => {
                 placeholder='Crate a new todo...'
                 value={inputValue}
                 onChange={onInputHandler}
+                onKeyDown={onAddTask}
             />
         </div>
     );

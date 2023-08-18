@@ -1,0 +1,24 @@
+.tasksWrapper {
+    padding: 1px;
+    background: #fff;
+    border-radius: 5px 5px 0 0;
+}
+
+.wrapper {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    color: hsl(236, 9%, 61%);
+    background: #fff;
+    padding: 15px;
+    border-radius: 0 0 5px 5px;
+}
+
+.button {
+    background: inherit;
+    border: none;
+    cursor: pointer;
+}
+.button:hover {
+    color: hsl(235, 19%, 35%);
+}

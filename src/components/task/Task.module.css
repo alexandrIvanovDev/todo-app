@@ -1,0 +1,27 @@
+.wrapper {
+    background: #fff;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid hsl(233, 11%, 84%);
+    color: hsl(235, 19%, 35%);
+}
+
+.checkbox {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.text {
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+.deleteIcon {
+    cursor: pointer;
+}
+
+.isDone {
+    text-decoration: line-through;
+    color: hsl(233, 11%, 84%)
+}
