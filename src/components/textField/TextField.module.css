@@ -1,0 +1,18 @@
+.wrapper {
+    background: #fff;
+    padding: 15px 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin: 40px 0 20px 0;
+}
+
+.checkbox {
+    margin-right: 15px;
+}
+
+.input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+}

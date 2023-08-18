@@ -1,0 +1,11 @@
+.background {
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+}
+
+.container {
+    width: 600px;
+    margin: 0 auto;
+    padding: 50px 0;
+}

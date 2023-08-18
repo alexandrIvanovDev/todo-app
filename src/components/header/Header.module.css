@@ -1,0 +1,15 @@
+.headerWrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header {
+    letter-spacing: 0.5em;
+    color: #fff;
+}
+
+.icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
