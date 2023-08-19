@@ -8,8 +8,11 @@ export type TaskType = {
     checked: boolean
 }
 
+export type FilterType = 'all' | 'active' | 'completed'
+
 type InitialState = {
     tasks: TaskType[]
+    filter: FilterType
     error: string | null
 }
 
@@ -20,6 +23,7 @@ const initialState: InitialState = {
         {id: v4(), text: 'Read for 1 hour', checked: false},
         {id: v4(), text: 'Complete Todo app', checked: false}
     ],
+    filter: 'all',
     error: null
 }
 
@@ -34,10 +38,25 @@ export const slice = createSlice({
                 return
             }
             state.tasks.push(task)
+        },
+        deleteTask: (state, action: PayloadAction<string>) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload)
+        },
+        changeTaskStatus: (state, action: PayloadAction<{id: string,  checked: boolean}>) => {
+            const task = state.tasks.find(t => t.id === action.payload.id)
+            if (task) {
+                task.checked = action.payload.checked
+            }
+        },
+        clearCompletedTask: (state) => {
+            state.tasks = state.tasks.filter(t => !t.checked)
+        },
+        changeFilter: (state, action: PayloadAction<FilterType>) => {
+            state.filter = action.payload
         }
     }
 })
 
-export const {addTask} = slice.actions
+export const {addTask, deleteTask, changeTaskStatus, clearCompletedTask, changeFilter} = slice.actions
 
 export default slice.reducer
