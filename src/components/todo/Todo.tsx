@@ -12,7 +12,10 @@ export const Todo: FC = () => {
         <div className={cl.container}>
             <Header/>
             <TextField />
-            <List tasks={tasks}/>
+            {tasks.length
+                ? <List/>
+                : <h2 className={cl.header}>You don't have any tasks</h2>
+            }
         </div>
     );
 };

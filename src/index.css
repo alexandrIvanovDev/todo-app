@@ -2,6 +2,7 @@
   font-family: 'Josefin Sans Variable', sans-serif;
   font-size: 18px;
   background: hsl(236, 33%, 92%);
+  /*background: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%))*/
 }
 
 * {

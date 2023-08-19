@@ -1,22 +1,26 @@
 import {ChangeEvent, FC, useState} from 'react';
 import cl from './Task.module.css';
 import deleteIcon from '../../assets/images/icon-cross.svg'
-import {TaskType} from '../../store/reducers/todo.ts';
+import {changeTaskStatus, deleteTask, TaskType} from '../../store/reducers/todo.ts';
+import {useDispatch} from 'react-redux';
 
 type PropsType = {
     task: TaskType
 }
 
 export const Task: FC<PropsType> = ({task}) => {
-    const [value, setValue] = useState(task.text)
+    // const [value, setValue] = useState(task.text)
     const [isChecked, setIsChecked] = useState(task.checked)
 
-    const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
-        setValue(e.currentTarget.value)
-    }
+    const dispatch = useDispatch()
+
+    // const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+    //     setValue(e.currentTarget.value)
+    // }
 
     const onCheckboxHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setIsChecked(e.currentTarget.checked)
+        dispatch(changeTaskStatus({id: task.id, checked: e.currentTarget.checked}))
     }
 
     return (
@@ -27,8 +31,8 @@ export const Task: FC<PropsType> = ({task}) => {
                 checked={isChecked}
                 onChange={onCheckboxHandler}
             />
-            <span className={cl.text}>{value}</span>
-            <img src={deleteIcon} alt="delete" className={cl.deleteIcon}/>
+            <span className={cl.text}>{task.text}</span>
+            <img src={deleteIcon} alt="delete" className={cl.deleteIcon} onClick={() => dispatch(deleteTask(task.id))}/>
         </div>
     );
 }
