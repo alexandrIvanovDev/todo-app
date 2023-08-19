@@ -1,40 +1,28 @@
-import {FC, useEffect, useState} from 'react';
+import {FC} from 'react';
 import {Task} from '../task/Task.tsx';
 import cl from './List.module.css'
-import {TaskType} from '../../store/reducers/todo.ts';
+import {Filter} from '../filter/Filter.tsx';
+import {useAppSelector} from '../../store/store.ts';
 
-type PropsType = {
-    tasks: TaskType[]
-}
 
-export const List: FC<PropsType> = ({tasks}) => {
-    const [leftItems, setLeftItems] = useState(0)
+export const List: FC = () => {
+    const {tasks, filter} = useAppSelector(state => state.todo)
 
-    useEffect(() => {
-        setLeftItems(tasks.filter(t => !t.checked).length)
-    }, []);
+    let filteredTask = tasks
 
+    if (filter === 'active') {
+        filteredTask = tasks.filter(t => !t.checked)
+    }
+    if (filter === 'completed') {
+        filteredTask = tasks.filter(t => t.checked)
+    }
 
     return (
         <>
             <div className={cl.tasksWrapper}>
-                {tasks.map(task => {
-                    return <Task key={task.id} task={task}/>
-                })}
+                {filteredTask.map(task => <Task key={task.id} task={task}/>)}
             </div>
-            <div className={cl.wrapper}>
-                <div>
-                    <span>{leftItems} items left</span>
-                </div>
-                <div>
-                    <button className={cl.button}>All</button>
-                    <button className={cl.button}>Active</button>
-                    <button className={cl.button}>Completed</button>
-                </div>
-                <div>
-                    <button className={cl.button}>Clear completed</button>
-                </div>
-            </div>
+            <Filter/>
         </>
     );
 };

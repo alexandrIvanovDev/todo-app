@@ -1,0 +1,35 @@
+.wrapper {
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    color: hsl(236, 9%, 61%);
+    background: #fff;
+    padding: 15px 20px;
+    border-radius: 0 0 5px 5px;
+}
+
+.button {
+    background: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: all 0.2s;
+}
+
+.activeFilter {
+    color: hsl(220, 98%, 61%);
+    font-weight: bold;
+}
+
+.buttonClearAll {
+    padding: 0;
+}
+
+.button:hover {
+    color: hsl(235, 19%, 35%);
+}
+
+.activeFilter:hover {
+    color: hsl(220, 98%, 61%);
+    /*font-weight: bold;*/
+}
