@@ -53,10 +53,16 @@ export const slice = createSlice({
         },
         changeFilter: (state, action: PayloadAction<FilterType>) => {
             state.filter = action.payload
+        },
+        changeTaskText: (state, action: PayloadAction<{id: string, text: string}>) => {
+            const task = state.tasks.find(t => t.id === action.payload.id)
+            if (task) {
+                task.text = action.payload.text
+            }
         }
     }
 })
 
-export const {addTask, deleteTask, changeTaskStatus, clearCompletedTask, changeFilter} = slice.actions
+export const {addTask, deleteTask, changeTaskStatus, clearCompletedTask, changeFilter, changeTaskText} = slice.actions
 
 export default slice.reducer

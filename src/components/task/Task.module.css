@@ -13,15 +13,22 @@
 }
 
 .text {
-    cursor: pointer;
+    cursor: grab;
     flex-grow: 1;
 }
 
 .deleteIcon {
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .isDone {
     text-decoration: line-through;
     color: hsl(233, 11%, 84%)
+}
+
+.input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
 }
