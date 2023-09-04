@@ -3,7 +3,6 @@ import {createContext} from 'react';
 export enum Theme {
     'LIGHT'= 'light',
     'DARK'= 'dark'
-
 }
 
 type Props = {
@@ -13,4 +12,4 @@ type Props = {
 
 export const ThemeContext = createContext<Props>({})
 
-export const LOCAL_STORAGE_THEME_KEY = 'theme'
+// export const LOCAL_STORAGE_THEME_KEY = 'theme'

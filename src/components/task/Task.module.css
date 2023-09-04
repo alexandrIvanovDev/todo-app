@@ -5,6 +5,7 @@
     align-items: center;
     border-bottom: 1px solid hsl(233, 11%, 84%);
     color: hsl(235, 19%, 35%);
+    cursor: grab;
 }
 
 .checkbox {
@@ -13,7 +14,7 @@
 }
 
 .text {
-    cursor: grab;
+    cursor: pointer;
     flex-grow: 1;
 }
 
@@ -31,4 +32,30 @@
     border: none;
     outline: none;
     flex-grow: 1;
+}
+
+
+.checkboxDiv {
+    /*width: 25px;*/
+    /*height: 25px;*/
+    margin-right: 20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.circle {
+    width: 25px;
+    height: 25px;
+    border: 1px #e3e4f1 solid;
+    border-radius: 50%;
+    background: none;
+    user-select: none;
+}
+
+.checked {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(#57DDFFFF, #C058F3FF);
+    border-radius: 50%;
 }

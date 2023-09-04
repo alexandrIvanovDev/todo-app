@@ -6,6 +6,7 @@ export type TaskType = {
     id: string
     text: string
     checked: boolean
+    order: number
 }
 
 export type FilterType = 'all' | 'active' | 'completed'
@@ -18,10 +19,10 @@ type InitialState = {
 
 const initialState: InitialState = {
     tasks: [
-        {id: v4(), text: 'Complete online JS course', checked: true},
-        {id: v4(), text: '10 minutes meditation', checked: false},
-        {id: v4(), text: 'Read for 1 hour', checked: false},
-        {id: v4(), text: 'Complete Todo app', checked: false}
+        {id: v4(), text: 'Complete online JS course', checked: true, order: 1},
+        {id: v4(), text: '10 minutes meditation', checked: false, order: 2},
+        {id: v4(), text: 'Read for 1 hour', checked: false, order: 3},
+        {id: v4(), text: 'Complete Todo app', checked: false, order: 4}
     ],
     filter: 'all',
     error: null
@@ -32,7 +33,7 @@ export const slice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action: PayloadAction<string>) => {
-            const task: TaskType = {id: v4(), text: action.payload, checked: false}
+            const task: TaskType = {id: v4(), text: action.payload, checked: false, order: state.tasks.length + 1}
             if (action.payload.trim() === '') {
                 state.error = 'error'
                 return

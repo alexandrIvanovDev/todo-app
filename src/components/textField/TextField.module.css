@@ -16,3 +16,12 @@
     outline: none;
     flex-grow: 1;
 }
+
+.circle {
+    /*cursor: pointer;*/
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    border: 1px solid #e3e4f1;
+    margin-right: 20px;
+}

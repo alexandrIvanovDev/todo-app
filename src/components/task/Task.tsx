@@ -1,4 +1,4 @@
-import {ChangeEvent, FC, useState, KeyboardEvent} from 'react';
+import {ChangeEvent, FC, KeyboardEvent, useState} from 'react';
 import cl from './Task.module.css';
 import deleteIcon from '../../assets/images/icon-cross.svg'
 import {changeTaskStatus, changeTaskText, deleteTask, TaskType} from '../../store/reducers/todo.ts';
@@ -37,11 +37,34 @@ export const Task: FC<PropsType> = ({task}) => {
         }
     }
 
+    // const onDragStartHandler = (e: DragEvent<HTMLDivElement>, task: TaskType) => {
+    //     console.log(e, task)
+    // }
+    //
+    // const onDragEndHandler = (e: DragEvent<HTMLDivElement>) => {
+    //
+    // }
+    //
+    // const onDragOverHandler = (e: DragEvent<HTMLDivElement>) => {
+    //     e.preventDefault()
+    // }
+    //
+    // const onDropHandler = (e: DragEvent<HTMLDivElement>, task: TaskType) => {
+    //     e.preventDefault()
+    //     console.log('drop', task)
+    // }
+
     return (
         <div
             className={classNames(cl.wrapper, {[cl.isDone]: isChecked})}
             onMouseEnter={() => setIsShowIcon(true)}
             onMouseLeave={() => setIsShowIcon(false)}
+            draggable
+            // onDragStart={(e) => onDragStartHandler(e, task)}
+            // onDragLeave={(e) => onDragEndHandler(e)}
+            // onDragEnd={(e) => onDragEndHandler(e)}
+            // onDragOver={(e) => onDragOverHandler(e)}
+            // onDrop={(e) => onDropHandler(e, task)}
         >
             <input
                 type="checkbox"
@@ -49,6 +72,13 @@ export const Task: FC<PropsType> = ({task}) => {
                 checked={isChecked}
                 onChange={onCheckboxHandler}
             />
+
+            {/*<button className={cl.checkboxDiv} onClick={onCheckboxHandler}>*/}
+            {/*    {isChecked*/}
+            {/*        ? <img className={cl.checked} src={checkIcon} alt="check"/>*/}
+            {/*        : <div className={cl.circle}/>*/}
+            {/*    }*/}
+            {/*</button>*/}
 
             {editMode
                 ? <input
@@ -69,7 +99,8 @@ export const Task: FC<PropsType> = ({task}) => {
                                 alt="delete"
                                 className={cl.deleteIcon}
                                 onClick={() => dispatch(deleteTask(task.id))}
-            />}
+            />
+            }
         </div>
     );
 }
