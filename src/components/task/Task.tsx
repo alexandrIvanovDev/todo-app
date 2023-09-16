@@ -71,14 +71,9 @@ export const Task: FC<PropsType> = ({task}) => {
                 className={cl.checkbox}
                 checked={isChecked}
                 onChange={onCheckboxHandler}
+                id={task.id}
             />
-
-            {/*<button className={cl.checkboxDiv} onClick={onCheckboxHandler}>*/}
-            {/*    {isChecked*/}
-            {/*        ? <img className={cl.checked} src={checkIcon} alt="check"/>*/}
-            {/*        : <div className={cl.circle}/>*/}
-            {/*    }*/}
-            {/*</button>*/}
+            <label htmlFor={task.id} className={cl.customCheckbox}></label>
 
             {editMode
                 ? <input
@@ -93,6 +88,7 @@ export const Task: FC<PropsType> = ({task}) => {
                 : <span
                     className={cl.text}
                     onDoubleClick={() => setEditMode(true)}
+                    title='Double click to change the task title'
                 >{value}</span>}
 
             {isShowIcon && <img src={deleteIcon}
