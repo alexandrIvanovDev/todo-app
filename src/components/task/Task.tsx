@@ -37,6 +37,12 @@ export const Task: FC<PropsType> = ({task}) => {
         }
     }
 
+    const editTask = () => {
+        if (!task.checked) {
+            setEditMode(true)
+        }
+    }
+
     // const onDragStartHandler = (e: DragEvent<HTMLDivElement>, task: TaskType) => {
     //     console.log(e, task)
     // }
@@ -87,7 +93,7 @@ export const Task: FC<PropsType> = ({task}) => {
                 />
                 : <span
                     className={cl.text}
-                    onDoubleClick={() => setEditMode(true)}
+                    onDoubleClick={editTask}
                     title='Double click to change the task title'
                 >{value}</span>}
 

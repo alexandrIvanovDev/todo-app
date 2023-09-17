@@ -2,8 +2,8 @@
     font-size: 16px;
     display: flex;
     justify-content: space-between;
-    color: hsl(236, 9%, 61%);
-    background: #fff;
+    color: var(--filter-color);
+    background: var(--bg-task-color);
     padding: 15px 20px;
     border-radius: 0 0 5px 5px;
 }
@@ -17,7 +17,7 @@
 }
 
 .activeFilter {
-    color: hsl(220, 98%, 61%);
+    color: var(--active-filer);
     font-weight: bold;
 }
 
@@ -26,10 +26,9 @@
 }
 
 .button:hover {
-    color: hsl(235, 19%, 35%);
+    color: var(--color-hover);
 }
 
 .activeFilter:hover {
-    color: hsl(220, 98%, 61%);
-    /*font-weight: bold;*/
+    color: var(--active-filer);
 }

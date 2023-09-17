@@ -1,10 +1,10 @@
 .wrapper {
-    background: #fff;
+    background: var(--bg-task-color);
     padding: 20px 20px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid hsl(233, 11%, 84%);
-    color: hsl(235, 19%, 35%);
+    border-bottom: 1px solid var(--checkbox-border-color);
+    color: var(--font-color);
     cursor: grab;
 }
 
@@ -18,18 +18,17 @@
     width: 25px;
     height: 25px;
     margin-right: 15px;
-    border: 1px solid #e3e4f1;
+    border: 1px solid var(--checkbox-border-color);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    /*transition: all 0.2s;*/
 }
 
 .customCheckbox:hover {
     background:
-            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(var(--bg-task-color) 0 0) padding-box,
             linear-gradient(125deg, #57DDFFFF, #C058F3FF) border-box;
     border: 1px solid transparent;
 }
@@ -64,11 +63,13 @@
 
 .isDone {
     text-decoration: line-through;
-    color: hsl(233, 11%, 84%)
+    color: var(--is-done-color)
 }
 
 .input {
     border: none;
     outline: none;
     flex-grow: 1;
+    background-color: var(--bg-task-color);
+    color: var(--font-color);
 }

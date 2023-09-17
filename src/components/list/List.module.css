@@ -3,7 +3,7 @@
 }
 
 .tasksWrapper {
-    padding: 1px;
-    background: #fff;
+    padding: 1px 1px 0 1px;
+    background: var(--bg-task-color);
     border-radius: 5px 5px 0 0;
 }
