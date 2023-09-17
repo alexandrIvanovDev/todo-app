@@ -15,12 +15,12 @@ export const Todo: FC = () => {
 
     return (
         <div className={cl.container}>
-            <img src={theme === Theme.LIGHT ? desktopDark : desktopLight} alt='background' className={cl.background}/>
+            <img src={theme === Theme.LIGHT ? desktopLight : desktopDark} alt='background' className={cl.background}/>
             <Header/>
             <TextField />
             {tasks.length
                 ? <List/>
-                : <h2 className={cl.header}>You don't have any tasks</h2>
+                : <h2 className={cl.header}>Add a new task</h2>
             }
         </div>
     );

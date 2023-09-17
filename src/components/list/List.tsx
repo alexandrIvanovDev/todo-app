@@ -18,11 +18,11 @@ export const List: FC = () => {
     }
 
     return (
-        <>
+        <div className={cl.content}>
             <div className={cl.tasksWrapper}>
                 {filteredTask.map(task => <Task key={task.id} task={task}/>)}
             </div>
             <Filter/>
-        </>
+        </div>
     );
 };

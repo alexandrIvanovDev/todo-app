@@ -24,6 +24,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    /*transition: all 0.2s;*/
+}
+
+.customCheckbox:hover {
+    background:
+            linear-gradient(#fff 0 0) padding-box,
+            linear-gradient(125deg, #57DDFFFF, #C058F3FF) border-box;
+    border: 1px solid transparent;
 }
 
 .checkbox:checked ~ .customCheckbox {
@@ -64,29 +72,3 @@
     outline: none;
     flex-grow: 1;
 }
-
-
-/*.checkboxDiv {*/
-/*    !*width: 25px;*!*/
-/*    !*height: 25px;*!*/
-/*    margin-right: 20px;*/
-/*    cursor: pointer;*/
-/*    border: none;*/
-/*    background: none;*/
-/*}*/
-
-/*.circle {*/
-/*    width: 25px;*/
-/*    height: 25px;*/
-/*    border: 1px #e3e4f1 solid;*/
-/*    border-radius: 50%;*/
-/*    background: none;*/
-/*    user-select: none;*/
-/*}*/
-
-/*.checked {*/
-/*    width: 25px;*/
-/*    height: 25px;*/
-/*    background: linear-gradient(#57DDFFFF, #C058F3FF);*/
-/*    border-radius: 50%;*/
-/*}*/

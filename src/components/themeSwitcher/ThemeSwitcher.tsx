@@ -13,7 +13,7 @@ export const ThemeSwitcher = () => {
             onClick={toggleTheme}
             className={cl.btn}
         >
-            <img src={theme === Theme.LIGHT ? sunIcon : moonIcon} alt="themeIcon"/>
+            <img src={theme === Theme.LIGHT ? moonIcon : sunIcon} alt="themeIcon"/>
         </button>
     )
 }
