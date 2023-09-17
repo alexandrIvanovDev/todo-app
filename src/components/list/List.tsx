@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {Task} from '../task/Task.tsx';
-import cl from './List.module.css'
+import cl from './List.module.scss'
 import {Filter} from '../filter/Filter.tsx';
 import {useAppSelector} from '../../store/store.ts';
 

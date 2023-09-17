@@ -1,7 +1,7 @@
 import Header from '../header/Header.tsx';
 import {TextField} from '../textField/TextField.tsx';
 import {List} from '../list/List.tsx';
-import cl from './Todo.module.css'
+import cl from './Todo.module.scss'
 import {FC} from 'react';
 import {useAppSelector} from '../../store/store.ts';
 

@@ -1,5 +1,5 @@
 import {ChangeEvent, FC, KeyboardEvent, useState} from 'react';
-import cl from './Task.module.css';
+import cl from './Task.module.scss';
 import deleteIcon from '../../assets/images/icon-cross.svg'
 import {changeTaskStatus, changeTaskText, deleteTask, TaskType} from '../../store/reducers/todo.ts';
 import {useDispatch} from 'react-redux';

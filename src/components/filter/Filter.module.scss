@@ -1,0 +1,34 @@
+.wrapper {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--filter-color);
+  background: var(--bg-task-color);
+  padding: 15px 20px;
+  border-radius: 0 0 5px 5px;
+
+  .button {
+    background: inherit;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: var(--color-hover);
+    }
+  }
+
+  .activeFilter {
+    color: var(--active-filer);
+    font-weight: bold;
+
+    :hover {
+      color: var(--active-filer);
+    }
+  }
+
+  .buttonClearAll {
+    padding: 0;
+  }
+}

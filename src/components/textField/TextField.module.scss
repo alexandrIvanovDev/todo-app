@@ -1,0 +1,23 @@
+.wrapper {
+  background: var(--bg-task-color);
+  padding: 20px 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  margin: 40px 0 20px 0;
+
+  .circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    border: 1px solid var(--checkbox-border-color);
+    margin-right: 20px;
+  }
+
+  .input {
+    background: var(--bg-task-color);
+    border: none;
+    outline: none;
+    flex-grow: 1;
+  }
+}

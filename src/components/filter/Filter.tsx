@@ -1,8 +1,9 @@
-import cl from './Filter.module.css';
+import cl from './Filter.module.scss';
 import {changeFilter, clearCompletedTask} from '../../store/reducers/todo.ts';
 import {useEffect, useState} from 'react';
 import {useAppSelector} from '../../store/store.ts';
 import {useDispatch} from 'react-redux';
+import classNames from 'classnames';
 
 export const Filter = () => {
     const [leftItems, setLeftItems] = useState(0)
@@ -21,24 +22,24 @@ export const Filter = () => {
             </div>
             <div>
                 <button
-                    className={`${cl.button} ${filter === 'all' && cl.activeFilter}`}
+                    className={classNames(cl.button, {[cl.activeFilter]: filter === 'all'})}
                     onClick={() => dispatch(changeFilter('all'))}
                 >All
                 </button>
                 <button
-                    className={`${cl.button} ${filter === 'active' && cl.activeFilter}`}
+                    className={classNames(cl.button, {[cl.activeFilter]: filter === 'active'})}
                     onClick={() => dispatch(changeFilter('active'))}
                 >Active
                 </button>
                 <button
-                    className={`${cl.button} ${filter === 'completed' && cl.activeFilter}`}
+                    className={classNames(cl.button, {[cl.activeFilter]: filter === 'completed'})}
                     onClick={() => dispatch(changeFilter('completed'))}
                 >Completed
                 </button>
             </div>
             <div>
                 <button
-                    className={`${cl.button} ${cl.buttonClearAll}`}
+                    className={classNames(cl.button, cl.buttonClearAll)}
                     onClick={() => dispatch(clearCompletedTask())}
                 >
                     Clear completed

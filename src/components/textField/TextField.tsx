@@ -1,26 +1,20 @@
-import cl from './TextField.module.css'
+import cl from './TextField.module.scss'
 import {ChangeEvent, FC, useState, KeyboardEvent} from 'react';
 import {useDispatch} from 'react-redux';
 import {addTask} from '../../store/reducers/todo.ts';
 
 type PropsType = {
     value?: string
-    checked?: boolean
 }
 
 export const TextField: FC<PropsType> = ({value}) => {
     const [inputValue, setInputValue] = useState(value || '')
-    // const [isChecked, setIsChecked] = useState(checked)
 
     const dispatch = useDispatch()
 
     const onInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.currentTarget.value)
     }
-
-    // const onCheckboxHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setIsChecked(e.currentTarget.checked)
-    // }
 
     const onAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
@@ -31,12 +25,6 @@ export const TextField: FC<PropsType> = ({value}) => {
 
     return (
         <div className={cl.wrapper}>
-            {/*<input*/}
-            {/*    type="checkbox"*/}
-            {/*    className={cl.checkbox}*/}
-            {/*    checked={isChecked}*/}
-            {/*    onChange={onCheckboxHandler}*/}
-            {/*/>*/}
             <div className={cl.circle}></div>
             <input
                 type="text"
