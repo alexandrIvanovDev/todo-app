@@ -4,6 +4,7 @@ import deleteIcon from '../../assets/images/icon-cross.svg'
 import {changeTaskStatus, changeTaskText, deleteTask, TaskType} from '../../store/reducers/todo.ts';
 import {useDispatch} from 'react-redux';
 import classNames from 'classnames';
+import {Checkbox} from '../checkbox/Checkbox.tsx';
 
 type PropsType = {
     task: TaskType
@@ -72,14 +73,8 @@ export const Task: FC<PropsType> = ({task}) => {
             // onDragOver={(e) => onDragOverHandler(e)}
             // onDrop={(e) => onDropHandler(e, task)}
         >
-            <input
-                type="checkbox"
-                className={cl.checkbox}
-                checked={isChecked}
-                onChange={onCheckboxHandler}
-                id={task.id}
-            />
-            <label htmlFor={task.id} className={cl.customCheckbox}></label>
+
+            <Checkbox id={task.id} isChecked={isChecked} onCheckboxHandler={onCheckboxHandler}/>
 
             {editMode
                 ? <input

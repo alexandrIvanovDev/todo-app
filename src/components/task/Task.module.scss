@@ -7,49 +7,6 @@
   color: var(--font-color);
   cursor: grab;
 
-  .checkbox {
-    z-index: -1;
-    opacity: 0;
-    position: absolute;
-  }
-
-  .customCheckbox {
-    width: 25px;
-    height: 25px;
-    margin-right: 15px;
-    border: 1px solid var(--checkbox-border-color);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .customCheckbox:hover {
-    background: linear-gradient(var(--bg-task-color) 0 0) padding-box,
-    linear-gradient(125deg, #57DDFFFF, #C058F3FF) border-box;
-    border: 1px solid transparent;
-  }
-
-  .checkbox:checked ~ .customCheckbox {
-    border: none;
-    background: linear-gradient(125deg, #57DDFFFF, #C058F3FF);
-  }
-
-  .checkbox:checked ~ .customCheckbox::before {
-    content: '';
-    width: 50%;
-    height: 50%;
-    pointer-events: none;
-    background-image: url('../../assets/images/icon-check.svg');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: block;
-    z-index: 10;
-    position: relative;
-  }
-
   .input {
     border: none;
     outline: none;
