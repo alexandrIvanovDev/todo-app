@@ -1,0 +1,12 @@
+.input {
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    background-color: var(--bg-task-color);
+    color: var(--font-color);
+}
+
+.text {
+    cursor: pointer;
+    flex-grow: 1;
+}
