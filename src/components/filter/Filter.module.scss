@@ -1,11 +1,30 @@
+@import '../../styles/mixin';
+
 .wrapper {
   font-size: 16px;
-  display: flex;
-  justify-content: space-between;
+  @include flex(row, space-between, center);
   color: var(--filter-color);
   background: var(--bg-task-color);
-  padding: 15px 20px;
   border-radius: 0 0 5px 5px;
+
+  .leftItems {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1;
+    padding: 1rem;
+  }
+
+  .btns {
+    padding: 1rem;
+    gap: 0.5rem
+  }
+
+  .clearAll {
+    display: flex;
+    padding: 1rem;
+    flex: 1;
+    justify-content: flex-end;
+  }
 
   .button {
     background: inherit;
@@ -30,5 +49,64 @@
 
   .buttonClearAll {
     padding: 0;
+  }
+}
+
+.forMobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    flex-wrap: wrap;
+
+    .leftItems {
+      flex-grow: 1;
+      flex-shrink: 1;
+      border-radius: 3px 3px 3px 3px;
+      margin: 1px;
+    }
+
+    .btns {
+      display: none;
+    }
+
+    .clearAll {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+  .forMobile {
+    display: flex;
+    justify-content: center;
+    background: inherit;
+    width: 100%;
+    padding: 1rem;
+    font-size: 16px;
+    background: var(--bg-task-color);
+    color: var(--filter-color);
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+
+    .button {
+      background: inherit;
+      border: none;
+      cursor: pointer;
+      padding: 0 10px;
+      transition: all 0.2s;
+
+      &:hover {
+        color: var(--color-hover);
+      }
+    }
+
+    .activeFilter {
+      color: var(--active-filer);
+      font-weight: bold;
+
+      &:hover {
+        color: var(--active-filer);
+      }
+    }
   }
 }

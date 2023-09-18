@@ -7,13 +7,13 @@
 .customCheckbox {
     width: 25px;
     height: 25px;
-    margin-right: 15px;
     border: 1px solid var(--checkbox-border-color);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .customCheckbox:hover {

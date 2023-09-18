@@ -29,7 +29,7 @@ export const TextField: FC<PropsType> = ({value}) => {
             <input
                 type="text"
                 className={cl.input}
-                placeholder='Crate a new todo...'
+                placeholder='Create a new todo...'
                 value={inputValue}
                 onChange={onInputHandler}
                 onKeyDown={onAddTask}

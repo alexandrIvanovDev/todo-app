@@ -1,5 +1,9 @@
 .content {
-  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+  //box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+  //border: 2px solid var(--bg-task-color);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
 
   .tasksWrapper {
     padding: 1px 1px 0 1px;

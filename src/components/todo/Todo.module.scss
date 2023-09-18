@@ -1,11 +1,17 @@
 .container {
   width: 600px;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 2rem 0;
 
   .header {
-    margin-top: 50px;
-    color: #fff;
+    margin-top: 3rem;
+    color: var(--filter-color);
     text-align: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 90%;
   }
 }
