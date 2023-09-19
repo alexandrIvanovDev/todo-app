@@ -8,8 +8,7 @@
   border-radius: 0 0 5px 5px;
 
   .leftItems {
-    display: flex;
-    justify-content: flex-start;
+    @include flex(row, flex-start);
     flex: 1;
     padding: 1rem;
   }
@@ -20,10 +19,9 @@
   }
 
   .clearAll {
-    display: flex;
+    @include flex(row, flex-end);
     padding: 1rem;
     flex: 1;
-    justify-content: flex-end;
   }
 
   .button {
@@ -76,8 +74,7 @@
     }
   }
   .forMobile {
-    display: flex;
-    justify-content: center;
+    @include flex(row, center);
     background: inherit;
     width: 100%;
     padding: 1rem;

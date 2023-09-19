@@ -1,7 +1,8 @@
+@import '../../styles/mixin';
+
 .content {
   border-radius: 0.5rem;
-  display: flex;
-  flex-direction: column;
+  @include flex(column);
 
   .tasksWrapper {
     padding: 1px 1px 0 1px;

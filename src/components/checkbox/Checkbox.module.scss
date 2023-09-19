@@ -1,3 +1,5 @@
+@import '../../styles/mixin';
+
 .checkbox {
     z-index: -1;
     opacity: 0;
@@ -10,9 +12,7 @@
     border: 1px solid var(--checkbox-border-color);
     border-radius: 50%;
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex(row, center, center);
     flex-shrink: 0;
 }
 

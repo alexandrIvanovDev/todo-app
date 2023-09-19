@@ -1,6 +1,7 @@
+@import '../../styles/mixin';
+
 .wrapper {
-  display: flex;
-  justify-content: space-between;
+  @include flex(row, space-between);
   margin: 2rem 0;
 
   .header {
