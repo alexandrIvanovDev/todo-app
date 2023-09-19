@@ -1,5 +1,7 @@
 import {useContext} from 'react';
 import {Theme, ThemeContext} from './ThemeContext.ts';
+import {useDispatch} from 'react-redux';
+import {changeTheme} from '../../store/reducers/todo.ts';
 
 type UseThemeResult = {
     theme: Theme,
@@ -8,12 +10,13 @@ type UseThemeResult = {
 
 export const useTheme = (): UseThemeResult => {
     const {theme, setTheme} = useContext(ThemeContext)
+    const dispatch = useDispatch()
 
     const toggleTheme = () => {
         const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
         // @ts-ignore
         setTheme(newTheme)
-        // localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
+        dispatch(changeTheme(newTheme))
     }
 
     // @ts-ignore

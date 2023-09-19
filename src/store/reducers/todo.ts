@@ -1,13 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {v4} from 'uuid';
+import {Theme} from '../../themeProvider/lib/ThemeContext.ts';
 
 export const slice = createSlice({
     name: 'todo',
     initialState: {
         tasks: [],
         filter: 'all',
-        error: null
+        error: null,
+        theme: Theme.LIGHT
     } as InitialState,
     reducers: {
         addTask: (state, action: PayloadAction<string>) => {
@@ -41,6 +43,9 @@ export const slice = createSlice({
         },
         setReorderTasks: (state, action: PayloadAction<Array<TaskType>>) => {
             state.tasks = action.payload
+        },
+        changeTheme: (state, action: PayloadAction<Theme>) => {
+            state.theme = action.payload
         }
     }
 })
@@ -52,7 +57,8 @@ export const {
     clearCompletedTask,
     changeFilter,
     changeTaskText,
-    setReorderTasks
+    setReorderTasks,
+    changeTheme
 } = slice.actions
 
 export default slice.reducer
@@ -70,4 +76,5 @@ type InitialState = {
     tasks: TaskType[]
     filter: FilterType
     error: string | null
+    theme: Theme
 }
