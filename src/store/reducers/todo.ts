@@ -2,8 +2,6 @@ import {createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import {v4} from 'uuid';
 
-export const LOCAL_STORAGE_TASKS_KEY = 'tasks'
-
 export const slice = createSlice({
     name: 'todo',
     initialState: {
@@ -19,22 +17,18 @@ export const slice = createSlice({
                 return
             }
             state.tasks.push(task)
-            localStorage.setItem(LOCAL_STORAGE_TASKS_KEY, JSON.stringify(state.tasks))
         },
         deleteTask: (state, action: PayloadAction<string>) => {
             state.tasks = state.tasks.filter(task => task.id !== action.payload)
-            localStorage.setItem(LOCAL_STORAGE_TASKS_KEY, JSON.stringify(state.tasks))
         },
         changeTaskStatus: (state, action: PayloadAction<{ id: string, checked: boolean }>) => {
             const task = state.tasks.find(t => t.id === action.payload.id)
             if (task) {
                 task.checked = action.payload.checked
             }
-            localStorage.setItem(LOCAL_STORAGE_TASKS_KEY, JSON.stringify(state.tasks))
         },
         clearCompletedTask: (state) => {
             state.tasks = state.tasks.filter(t => !t.checked)
-            localStorage.setItem(LOCAL_STORAGE_TASKS_KEY, JSON.stringify(state.tasks))
         },
         changeFilter: (state, action: PayloadAction<FilterType>) => {
             state.filter = action.payload
@@ -44,11 +38,9 @@ export const slice = createSlice({
             if (task) {
                 task.text = action.payload.text
             }
-            localStorage.setItem(LOCAL_STORAGE_TASKS_KEY, JSON.stringify(state.tasks))
         },
         setReorderTasks: (state, action: PayloadAction<Array<TaskType>>) => {
             state.tasks = action.payload
-            localStorage.setItem(LOCAL_STORAGE_TASKS_KEY, JSON.stringify(state.tasks))
         }
     }
 })
