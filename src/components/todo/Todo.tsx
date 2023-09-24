@@ -14,7 +14,7 @@ export const Todo: FC = () => {
             <TextField />
             {tasks.length
                 ? <List/>
-                : <h2 className={cl.header}>Add a new task</h2>
+                : <h2 className={cl.header} data-testid='header'>Add a new task</h2>
             }
         </div>
     );

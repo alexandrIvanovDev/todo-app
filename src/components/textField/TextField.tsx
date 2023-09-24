@@ -1,14 +1,10 @@
 import cl from './TextField.module.scss'
-import {ChangeEvent, FC, useState, KeyboardEvent} from 'react';
+import {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {addTask} from '../../store/reducers/todo.ts';
 
-type PropsType = {
-    value?: string
-}
-
-export const TextField: FC<PropsType> = ({value}) => {
-    const [inputValue, setInputValue] = useState(value || '')
+export const TextField = () => {
+    const [inputValue, setInputValue] = useState('')
 
     const dispatch = useDispatch()
 
@@ -33,6 +29,7 @@ export const TextField: FC<PropsType> = ({value}) => {
                 value={inputValue}
                 onChange={onInputHandler}
                 onKeyDown={onAddTask}
+                data-testid='textfield'
             />
         </div>
     );
