@@ -1,20 +1,27 @@
-import {render, screen} from '@testing-library/react';
-import {Provider} from 'react-redux';
-import {store} from '../../store/store.ts';
-import {expect} from 'vitest';
-import '@testing-library/jest-dom';
-import {Todo} from './Todo.tsx';
+import { render, screen } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { expect } from "vitest";
+
+import { store } from "../../store/store.ts";
+
+import "@testing-library/jest-dom";
+import { Todo } from "./Todo.tsx";
 
 const setup = () => {
-    const utils = render(<Provider store={store}><Todo/></Provider>)
-    const header = screen.getByTestId('header')
-    return {header, ...utils}
-}
+  const utils = render(
+    <Provider store={store}>
+      <Todo />
+    </Provider>,
+  );
+  const header = screen.getByTestId("header");
 
-describe('List', () => {
-    test('When havent tasks', () => {
-        const {header} = setup()
+  return { header, ...utils };
+};
 
-        expect(header).toBeInTheDocument()
-    })
-})
+describe("List", () => {
+  test("When havent tasks", () => {
+    const { header } = setup();
+
+    expect(header).toBeInTheDocument();
+  });
+});
