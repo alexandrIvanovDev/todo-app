@@ -1,16 +1,16 @@
 .input {
-    border: none;
-    outline: none;
-    flex-grow: 1;
-    background-color: var(--bg-task-color);
-    color: var(--font-color);
-    padding: 0 1rem;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  background-color: var(--bg-task-color);
+  color: var(--font-color);
+  padding: 0 1rem;
 }
 
 .text {
-    cursor: pointer;
-    flex-grow: 1;
-    max-width: 90%;
-    word-break: break-all;
-    padding: 0 1rem;
+  cursor: pointer;
+  flex-grow: 1;
+  max-width: 90%;
+  word-break: break-all;
+  padding: 0 1rem;
 }

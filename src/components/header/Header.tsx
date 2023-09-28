@@ -1,5 +1,5 @@
-import cl from "./Header.module.scss";
-import { ThemeSwitcher } from "../themeSwitcher";
+import cl from './Header.module.scss';
+import { ThemeSwitcher } from '../themeSwitcher';
 
 export const Header = () => {
   return (

@@ -1,5 +1,5 @@
-import { ChangeEvent, FC } from "react";
-import cl from "./Checkbox.module.scss";
+import { ChangeEvent, FC } from 'react';
+import cl from './Checkbox.module.scss';
 
 type Props = {
   id: string;
@@ -11,7 +11,7 @@ export const Checkbox: FC<Props> = ({ id, isChecked, onCheckboxHandler }) => {
   return (
     <>
       <input
-        type="checkbox"
+        type='checkbox'
         className={cl.checkbox}
         checked={isChecked}
         onChange={onCheckboxHandler}

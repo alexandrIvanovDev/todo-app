@@ -1,21 +1,21 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { v4 } from "uuid";
-import { Theme } from "../../themeProvider/lib/ThemeContext.ts";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { v4 } from 'uuid';
+import { Theme } from '../../themeProvider/lib/ThemeContext.ts';
 
 export const slice = createSlice({
-  name: "todo",
+  name: 'todo',
   initialState: {
     tasks: [],
-    filter: "all",
+    filter: 'all',
     error: null,
-    theme: Theme.LIGHT,
+    theme: Theme.DARK,
   } as InitialState,
   reducers: {
     addTask: (state, action: PayloadAction<string>) => {
       const task: TaskType = { id: v4(), text: action.payload, checked: false };
-      if (action.payload.trim() === "") {
-        state.error = "error";
+      if (action.payload.trim() === '') {
+        state.error = 'error';
         return;
       }
       state.tasks.push(task);
@@ -25,7 +25,7 @@ export const slice = createSlice({
     },
     changeTaskStatus: (
       state,
-      action: PayloadAction<{ id: string; checked: boolean }>,
+      action: PayloadAction<{ id: string; checked: boolean }>
     ) => {
       const task = state.tasks.find((t) => t.id === action.payload.id);
       if (task) {
@@ -40,7 +40,7 @@ export const slice = createSlice({
     },
     changeTaskText: (
       state,
-      action: PayloadAction<{ id: string; text: string }>,
+      action: PayloadAction<{ id: string; text: string }>
     ) => {
       const task = state.tasks.find((t) => t.id === action.payload.id);
       if (task) {
@@ -76,7 +76,7 @@ export type TaskType = {
   checked: boolean;
 };
 
-export type FilterType = "all" | "active" | "completed";
+export type FilterType = 'all' | 'active' | 'completed';
 
 type InitialState = {
   tasks: TaskType[];

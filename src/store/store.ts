@@ -1,11 +1,11 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import todo from "./reducers/todo.ts";
-import { TypedUseSelectorHook, useSelector } from "react-redux";
-import { persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import todo from './reducers/todo.ts';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
-  key: "tasks",
+  key: 'tasks',
   storage,
 };
 

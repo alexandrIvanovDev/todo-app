@@ -1,1 +1,1 @@
-export * from "./ThemeSwitcher.tsx";
+export * from './ThemeSwitcher.tsx';

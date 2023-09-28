@@ -1,6 +1,6 @@
-import { Theme, ThemeContext } from "../lib/ThemeContext.ts";
-import { FC, ReactNode, useMemo, useState } from "react";
-import { useAppSelector } from "../../store/store.ts";
+import { Theme, ThemeContext } from '../lib/ThemeContext.ts';
+import { FC, ReactNode, useMemo, useState } from 'react';
+import { useAppSelector } from '../../store/store.ts';
 
 type PropsType = {
   children: ReactNode;
@@ -15,7 +15,7 @@ export const ThemeProvider: FC<PropsType> = ({ children }) => {
       theme,
       setTheme,
     }),
-    [theme],
+    [theme]
   );
 
   return (
