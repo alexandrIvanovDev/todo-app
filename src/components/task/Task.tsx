@@ -43,7 +43,7 @@ export const Task: FC<PropsType> = ({ task, index }) => {
           {...provided.dragHandleProps}
         >
           <Checkbox
-            id={task.id}
+            task={task}
             isChecked={isChecked}
             onCheckboxHandler={onCheckboxHandler}
           />

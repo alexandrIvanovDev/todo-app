@@ -44,7 +44,11 @@ export const slice = createSlice({
     ) => {
       const task = state.tasks.find((t) => t.id === action.payload.id);
       if (task) {
-        task.text = action.payload.text;
+        if (action.payload.text !== '') {
+          task.text = action.payload.text;
+        } else {
+          task.error = 'Error, the task title cannot be empty';
+        }
       }
     },
     setReorderTasks: (state, action: PayloadAction<Array<TaskType>>) => {
@@ -52,6 +56,15 @@ export const slice = createSlice({
     },
     changeTheme: (state, action: PayloadAction<Theme>) => {
       state.theme = action.payload;
+    },
+    setTaskError: (
+      state,
+      action: PayloadAction<{ id: string; error: string | null }>
+    ) => {
+      const task = state.tasks.find((t) => t.id === action.payload.id);
+      if (task) {
+        task.error = null;
+      }
     },
   },
 });
@@ -65,6 +78,7 @@ export const {
   changeTaskText,
   setReorderTasks,
   changeTheme,
+  setTaskError,
 } = slice.actions;
 
 export default slice.reducer;
@@ -74,6 +88,7 @@ export type TaskType = {
   id: string;
   text: string;
   checked: boolean;
+  error?: string | null;
 };
 
 export type FilterType = 'all' | 'active' | 'completed';

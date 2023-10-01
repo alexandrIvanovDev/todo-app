@@ -1,6 +1,10 @@
-import { ChangeEvent, FC, KeyboardEvent, useState } from 'react';
+import { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeTaskText, TaskType } from '../../store/reducers/todo.ts';
+import {
+  changeTaskText,
+  setTaskError,
+  TaskType,
+} from '../../store/reducers/todo.ts';
 import cl from './TaskTitle.module.scss';
 
 type TaskTitle = {
@@ -8,11 +12,23 @@ type TaskTitle = {
   value: string;
   setValue: (value: string) => void;
 };
+
 export const TaskTitle: FC<TaskTitle> = ({ task, value, setValue }) => {
   const [editMode, setEditMode] = useState(false);
   const dispatch = useDispatch();
 
+  const setErrorNull = () => {
+    if (task.error) {
+      dispatch(setTaskError({ id: task.id, error: null }));
+    }
+  };
+
+  useEffect(() => {
+    setErrorNull();
+  }, []);
+
   const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
+    setErrorNull();
     setValue(e.currentTarget.value);
   };
 
@@ -54,6 +70,7 @@ export const TaskTitle: FC<TaskTitle> = ({ task, value, setValue }) => {
           data-testid='span'
         >
           {value}
+          {task.error && <div style={{ color: 'red' }}>{task.error}</div>}
         </span>
       )}
     </>
