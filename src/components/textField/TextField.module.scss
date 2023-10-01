@@ -1,25 +1,36 @@
 @import '../../styles/mixin';
 
 .wrapper {
-  background: var(--bg-task-color);
-  padding: 1rem;
-  @include flex(row);
-  border-radius: 0.5rem;
-  margin: 1rem 0;
-  box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+  position: relative;
 
-  .circle {
-    width: 25px;
-    height: 25px;
-    border-radius: 100%;
-    border: 1px solid var(--checkbox-border-color);
-    margin-right: 20px;
+  .error {
+    color: red;
+    position: absolute;
+    top: -20px;
+    left: 0;
   }
 
-  .input {
+  .inputWrapper {
     background: var(--bg-task-color);
-    border: none;
-    outline: none;
-    flex-grow: 1;
+    padding: 1rem;
+    @include flex(row);
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 5px 10px 2px rgba(34, 60, 80, 0.2);
+
+    .circle {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      border: 1px solid var(--checkbox-border-color);
+      margin-right: 20px;
+    }
+
+    .input {
+      background: var(--bg-task-color);
+      border: none;
+      outline: none;
+      flex-grow: 1;
+    }
   }
 }

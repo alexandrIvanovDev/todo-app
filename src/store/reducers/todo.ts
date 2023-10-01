@@ -15,7 +15,7 @@ export const slice = createSlice({
     addTask: (state, action: PayloadAction<string>) => {
       const task: TaskType = { id: v4(), text: action.payload, checked: false };
       if (action.payload.trim() === '') {
-        state.error = 'error';
+        state.error = 'Error, the task title cannot be empty';
         return;
       }
       state.tasks.push(task);
@@ -66,6 +66,9 @@ export const slice = createSlice({
         task.error = null;
       }
     },
+    setError: (state, action: PayloadAction<string | null>) => {
+      state.error = action.payload;
+    },
   },
 });
 
@@ -79,6 +82,7 @@ export const {
   setReorderTasks,
   changeTheme,
   setTaskError,
+  setError,
 } = slice.actions;
 
 export default slice.reducer;
