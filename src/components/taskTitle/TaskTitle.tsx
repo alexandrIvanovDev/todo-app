@@ -1,10 +1,12 @@
 import { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import {
+  TaskType,
   changeTaskText,
   setTaskError,
-  TaskType,
-} from '../../store/reducers/todo.ts';
+} from 'src/store/reducers/todo.ts';
+
 import cl from './TaskTitle.module.scss';
 
 type TaskTitle = {
@@ -53,21 +55,19 @@ export const TaskTitle: FC<TaskTitle> = ({ task, value, setValue }) => {
     <>
       {editMode ? (
         <input
+          autoFocus
           type='text'
           value={value}
-          onChange={onChangeValue}
-          onBlur={closeEditMode}
           className={cl.input}
+          onBlur={closeEditMode}
+          onChange={onChangeValue}
           onKeyDown={onEnterHandler}
-          autoFocus
-          data-testid='input'
         />
       ) : (
         <span
           className={cl.text}
           onDoubleClick={editTask}
           title='Double click to change the task title'
-          data-testid='span'
         >
           {value}
           {task.error && <div style={{ color: 'red' }}>{task.error}</div>}

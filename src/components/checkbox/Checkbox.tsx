@@ -1,6 +1,8 @@
 import { ChangeEvent, FC } from 'react';
+
+import { TaskType } from 'src/store/reducers/todo.ts';
+
 import cl from './Checkbox.module.scss';
-import { TaskType } from '../../store/reducers/todo.ts';
 
 type Props = {
   task: TaskType;
@@ -12,12 +14,12 @@ export const Checkbox: FC<Props> = ({ task, isChecked, onCheckboxHandler }) => {
   return (
     <>
       <input
-        type='checkbox'
-        className={cl.checkbox}
-        checked={isChecked}
-        onChange={onCheckboxHandler}
         id={task.id}
+        type='checkbox'
+        checked={isChecked}
+        className={cl.checkbox}
         disabled={!!task.error}
+        onChange={onCheckboxHandler}
       />
       <label htmlFor={task.id} className={cl.customCheckbox}></label>
     </>

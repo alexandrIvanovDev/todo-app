@@ -24,18 +24,6 @@
     flex: 1;
   }
 
-  .button {
-    background: inherit;
-    border: none;
-    cursor: pointer;
-    padding: 0 10px;
-    transition: all 0.2s;
-
-    &:hover {
-      color: var(--color-hover);
-    }
-  }
-
   .activeFilter {
     color: var(--active-filer);
 

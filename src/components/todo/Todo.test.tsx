@@ -1,11 +1,13 @@
-import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+
+import { render, screen } from '@testing-library/react';
 import { expect } from 'vitest';
 
-import { store } from '../../store/store.ts';
+import { store } from 'src/store/store.ts';
+
+import { Todo } from './Todo.tsx';
 
 import '@testing-library/jest-dom';
-import { Todo } from './Todo.tsx';
 
 const setup = () => {
   const utils = render(

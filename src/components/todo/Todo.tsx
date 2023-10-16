@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { useAppSelector } from '../../store/store.ts';
-import Header from '../header/Header.tsx';
-import { List } from '../list';
-import { TextField } from '../textField';
+
+import { Header } from 'src/components/header';
+import { List } from 'src/components/list';
+import { TextField } from 'src/components/textField';
+import { useAppSelector } from 'src/store/store.ts';
+
 import cl from './Todo.module.scss';
 
 export const Todo: FC = () => {
@@ -15,7 +17,7 @@ export const Todo: FC = () => {
       {tasks.length ? (
         <List />
       ) : (
-        <h2 className={cl.header} data-testid='header'>
+        <h2 data-testid='header' className={cl.header}>
           Add a new task
         </h2>
       )}

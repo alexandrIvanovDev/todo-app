@@ -1,7 +1,8 @@
-import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+
+import { createSlice } from '@reduxjs/toolkit';
+import { Theme } from 'src/themeProvider/lib/ThemeContext.ts';
 import { v4 } from 'uuid';
-import { Theme } from '../../themeProvider/lib/ThemeContext.ts';
 
 export const slice = createSlice({
   name: 'todo',
@@ -59,14 +60,14 @@ export const slice = createSlice({
     },
     setTaskError: (
       state,
-      action: PayloadAction<{ id: string; error: string | null }>
+      action: PayloadAction<{ id: string; error: null | string }>
     ) => {
       const task = state.tasks.find((t) => t.id === action.payload.id);
       if (task) {
         task.error = null;
       }
     },
-    setError: (state, action: PayloadAction<string | null>) => {
+    setError: (state, action: PayloadAction<null | string>) => {
       state.error = action.payload;
     },
   },
@@ -92,14 +93,14 @@ export type TaskType = {
   id: string;
   text: string;
   checked: boolean;
-  error?: string | null;
+  error?: null | string;
 };
 
-export type FilterType = 'all' | 'active' | 'completed';
+export type FilterType = 'active' | 'all' | 'completed';
 
 type InitialState = {
   tasks: TaskType[];
   filter: FilterType;
-  error: string | null;
+  error: null | string;
   theme: Theme;
 };

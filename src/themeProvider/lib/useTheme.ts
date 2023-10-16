@@ -1,7 +1,9 @@
 import { useContext } from 'react';
-import { Theme, ThemeContext } from './ThemeContext.ts';
 import { useDispatch } from 'react-redux';
-import { changeTheme } from '../../store/reducers/todo.ts';
+
+import { changeTheme } from 'src/store/reducers/todo.ts';
+
+import { Theme, ThemeContext } from './ThemeContext.ts';
 
 type UseThemeResult = {
   theme: Theme;
@@ -14,11 +16,11 @@ export const useTheme = (): UseThemeResult => {
 
   const toggleTheme = () => {
     const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
-    // @ts-ignore
-    setTheme(newTheme);
+    if (setTheme) {
+      setTheme(newTheme);
+    }
     dispatch(changeTheme(newTheme));
   };
 
-  // @ts-ignore
-  return { theme, toggleTheme };
+  return { theme, toggleTheme } as UseThemeResult;
 };

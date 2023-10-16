@@ -1,23 +1,27 @@
-import cl from './Filter.module.scss';
+import { FC, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { Button } from 'src/components/button/Button.tsx';
 import {
+  FilterType,
   changeFilter,
   clearCompletedTask,
-  FilterType,
-} from '../../store/reducers/todo.ts';
-import { FC, useEffect, useState } from 'react';
-import { useAppSelector } from '../../store/store.ts';
-import { useDispatch } from 'react-redux';
-import classNames from 'classnames';
+} from 'src/store/reducers/todo.ts';
+import { useAppSelector } from 'src/store/store.ts';
+
+import cl from './Filter.module.scss';
 
 export const Filter = () => {
   const [leftItems, setLeftItems] = useState(0);
   const { tasks, filter } = useAppSelector((state) => state.todo);
 
+  const filterArray: FilterType[] = ['all', 'active', 'completed'];
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     setLeftItems(tasks.filter((t) => !t.checked).length);
-  });
+  }, [tasks]);
 
   return (
     <>
@@ -26,19 +30,19 @@ export const Filter = () => {
           <span>{leftItems} items left</span>
         </div>
 
-        <FilterButtons filter={filter} />
+        <FilterButtons filter={filter} buttonsName={filterArray} />
 
         <div className={cl.clearAll}>
-          <button
-            className={classNames(cl.button, cl.buttonClearAll)}
+          <Button
+            addClass={cl.buttonClearAll}
             onClick={() => dispatch(clearCompletedTask())}
           >
             Clear completed
-          </button>
+          </Button>
         </div>
       </div>
       <div className={cl.forMobile}>
-        <FilterButtons filter={filter} />
+        <FilterButtons filter={filter} buttonsName={filterArray} />
       </div>
     </>
   );
@@ -46,36 +50,28 @@ export const Filter = () => {
 
 type FilterProps = {
   filter: FilterType;
+  buttonsName: FilterType[];
 };
 
-export const FilterButtons: FC<FilterProps> = ({ filter }) => {
+export const FilterButtons: FC<FilterProps> = ({ filter, buttonsName }) => {
   const dispatch = useDispatch();
   return (
     <div className={cl.btns}>
-      <button
-        className={classNames(cl.button, {
-          [cl.activeFilter]: filter === 'all',
-        })}
-        onClick={() => dispatch(changeFilter('all'))}
-      >
-        All
-      </button>
-      <button
-        className={classNames(cl.button, {
-          [cl.activeFilter]: filter === 'active',
-        })}
-        onClick={() => dispatch(changeFilter('active'))}
-      >
-        Active
-      </button>
-      <button
-        className={classNames(cl.button, {
-          [cl.activeFilter]: filter === 'completed',
-        })}
-        onClick={() => dispatch(changeFilter('completed'))}
-      >
-        Completed
-      </button>
+      {buttonsName.map((b) => {
+        const filterClass = {
+          [cl.activeFilter]: filter === b,
+        };
+
+        return (
+          <Button
+            key={b}
+            addClass={filterClass}
+            onClick={() => dispatch(changeFilter(b))}
+          >
+            {b}
+          </Button>
+        );
+      })}
     </div>
   );
 };

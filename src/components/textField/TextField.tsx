@@ -1,8 +1,10 @@
-import cl from './TextField.module.scss';
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addTask, setError } from '../../store/reducers/todo.ts';
-import { useAppSelector } from '../../store/store.ts';
+
+import { addTask, setError } from 'src/store/reducers/todo.ts';
+import { useAppSelector } from 'src/store/store.ts';
+
+import cl from './TextField.module.scss';
 
 export const TextField = () => {
   const [inputValue, setInputValue] = useState('');
@@ -37,12 +39,12 @@ export const TextField = () => {
         <div className={cl.circle}></div>
         <input
           type='text'
-          className={cl.input}
-          placeholder='Create a new todo...'
           value={inputValue}
-          onChange={onInputHandler}
+          className={cl.input}
           onKeyDown={onAddTask}
           data-testid='textfield'
+          onChange={onInputHandler}
+          placeholder='Create a new todo...'
         />
       </div>
     </div>

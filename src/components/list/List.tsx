@@ -1,12 +1,14 @@
 import { FC } from 'react';
-import { Task } from '../task';
-import cl from './List.module.scss';
-import { Filter } from '../filter';
-import { useAppSelector } from '../../store/store.ts';
-import { Footer } from '../footer';
-import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
-import { setReorderTasks } from '../../store/reducers/todo.ts';
+
+import { Filter } from 'src/components/filter';
+import { Footer } from 'src/components/footer';
+import { Task } from 'src/components/task';
+import { setReorderTasks } from 'src/store/reducers/todo.ts';
+import { useAppSelector } from 'src/store/store.ts';
+
+import cl from './List.module.scss';
 
 export const List: FC = () => {
   const { tasks, filter } = useAppSelector((state) => state.todo);
@@ -45,7 +47,7 @@ export const List: FC = () => {
               ref={provided.innerRef}
             >
               {filteredTask.map((task, index) => (
-                <Task key={task.id} task={task} index={index} />
+                <Task task={task} key={task.id} index={index} />
               ))}
               {provided.placeholder}
             </div>

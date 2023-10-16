@@ -1,16 +1,15 @@
 import { ChangeEvent, FC, useState } from 'react';
-import cl from './Task.module.scss';
-import deleteIcon from '../../assets/images/icon-cross.svg';
-import {
-  changeTaskStatus,
-  deleteTask,
-  TaskType,
-} from '../../store/reducers/todo.ts';
-import { useDispatch } from 'react-redux';
-import classNames from 'classnames';
-import { Checkbox } from '../checkbox';
 import { Draggable } from 'react-beautiful-dnd';
-import { TaskTitle } from '../taskTitle';
+import { useDispatch } from 'react-redux';
+
+import classNames from 'classnames';
+import deleteIcon from 'src/assets/images/icon-cross.svg';
+
+import { Checkbox } from 'src/components/checkbox';
+import { TaskTitle } from 'src/components/taskTitle';
+import { TaskType, changeTaskStatus, deleteTask } from 'src/store/reducers/todo.ts';
+
+import cl from './Task.module.scss';
 
 type PropsType = {
   task: TaskType;
@@ -32,13 +31,13 @@ export const Task: FC<PropsType> = ({ task, index }) => {
   };
 
   return (
-    <Draggable draggableId={task.id} index={index}>
+    <Draggable index={index} draggableId={task.id}>
       {(provided) => (
         <div
-          className={classNames(cl.wrapper, { [cl.isDone]: isChecked })}
+          ref={provided.innerRef}
           onMouseEnter={() => setIsShowIcon(true)}
           onMouseLeave={() => setIsShowIcon(false)}
-          ref={provided.innerRef}
+          className={classNames(cl.wrapper, { [cl.isDone]: isChecked })}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
@@ -52,8 +51,8 @@ export const Task: FC<PropsType> = ({ task, index }) => {
 
           {isShowIcon && (
             <img
-              src={deleteIcon}
               alt='delete'
+              src={deleteIcon}
               className={cl.deleteIcon}
               onClick={() => dispatch(deleteTask(task.id))}
             />

@@ -1,9 +1,13 @@
-import { describe, test, expect } from 'vitest';
-import { TextField } from './TextField.tsx';
-import { fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+
+import { fireEvent, render, screen } from '@testing-library/react';
+import { describe, expect, test } from 'vitest';
+
+import { store } from 'src/store/store.ts';
+
+import { TextField } from './TextField.tsx';
+
 import '@testing-library/jest-dom';
-import { store } from '../../store/store.ts';
 
 const setup = () => {
   const utils = render(

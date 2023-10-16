@@ -1,6 +1,8 @@
-import { Todo } from './components/todo';
 import classNames from 'classnames';
-import { useTheme } from './themeProvider/lib/useTheme.ts';
+import { useTheme } from 'src/themeProvider/lib/useTheme.ts';
+
+import { Todo } from 'src/components/todo';
+
 import './styles/index.scss';
 
 function App() {

@@ -1,0 +1,23 @@
+.button {
+  background: inherit;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: all 0.2s;
+  text-transform: capitalize;
+
+  &:hover {
+    color: var(--color-hover);
+  }
+  &:active {
+    color: var(--color-active);
+  }
+}
+
+.activeFilter {
+  color: var(--active-filer);
+
+  &:hover {
+    color: var(--active-filer);
+  }
+}

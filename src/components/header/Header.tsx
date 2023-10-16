@@ -1,5 +1,6 @@
+import { ThemeSwitcher } from 'src/components/themeSwitcher';
+
 import cl from './Header.module.scss';
-import { ThemeSwitcher } from '../themeSwitcher';
 
 export const Header = () => {
   return (
@@ -9,5 +10,3 @@ export const Header = () => {
     </div>
   );
 };
-
-export default Header;
