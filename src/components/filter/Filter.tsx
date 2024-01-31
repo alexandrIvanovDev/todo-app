@@ -1,13 +1,11 @@
-import { FC, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { useAppSelector } from 'src/app/providers/store/store.ts';
+import { FilterType } from 'src/app/providers/store/types.ts';
+import { changeFilter, clearCompletedTask } from 'src/services/todo.ts';
+
 import { Button } from 'src/components/button/Button.tsx';
-import {
-  FilterType,
-  changeFilter,
-  clearCompletedTask,
-} from 'src/store/reducers/todo.ts';
-import { useAppSelector } from 'src/store/store.ts';
 
 import cl from './Filter.module.scss';
 
@@ -48,12 +46,12 @@ export const Filter = () => {
   );
 };
 
-type FilterProps = {
+type Props = {
   filter: FilterType;
   buttonsName: FilterType[];
 };
 
-export const FilterButtons: FC<FilterProps> = ({ filter, buttonsName }) => {
+export const FilterButtons = ({ filter, buttonsName }: Props) => {
   const dispatch = useDispatch();
   return (
     <div className={cl.btns}>

@@ -1,9 +1,8 @@
 import { Provider } from 'react-redux';
 
 import { render, screen } from '@testing-library/react';
+import { store } from 'src/app/providers/store/store.ts';
 import { expect } from 'vitest';
-
-import { store } from 'src/store/store.ts';
 
 import { Todo } from './Todo.tsx';
 

@@ -1,8 +1,8 @@
 import { FC, ReactNode, useMemo, useState } from 'react';
 
-import { useAppSelector } from 'src/store/store.ts';
+import { useAppSelector } from 'src/app/providers/store/store.ts';
 
-import { Theme, ThemeContext } from '../lib/ThemeContext.ts';
+import { Theme, ThemeContext } from './ThemeContext.ts';
 
 type PropsType = {
   children: ReactNode;

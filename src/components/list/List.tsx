@@ -1,16 +1,16 @@
-import { FC } from 'react';
 import { DragDropContext, DropResult, Droppable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
+
+import { useAppSelector } from 'src/app/providers/store/store.ts';
+import { setReorderTasks } from 'src/services/todo.ts';
 
 import { Filter } from 'src/components/filter';
 import { Footer } from 'src/components/footer';
 import { Task } from 'src/components/task';
-import { setReorderTasks } from 'src/store/reducers/todo.ts';
-import { useAppSelector } from 'src/store/store.ts';
 
 import cl from './List.module.scss';
 
-export const List: FC = () => {
+export const List = () => {
   const { tasks, filter } = useAppSelector((state) => state.todo);
 
   const dispatch = useDispatch();

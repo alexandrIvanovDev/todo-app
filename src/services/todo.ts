@@ -1,7 +1,8 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { createSlice } from '@reduxjs/toolkit';
-import { Theme } from 'src/themeProvider/lib/ThemeContext.ts';
+import { FilterType, TaskType } from 'src/app/providers/store/types.ts';
+import { Theme } from 'src/app/providers/themeProvider/ThemeContext.ts';
 import { v4 } from 'uuid';
 
 export const slice = createSlice({
@@ -87,16 +88,6 @@ export const {
 } = slice.actions;
 
 export default slice.reducer;
-
-//types
-export type TaskType = {
-  id: string;
-  text: string;
-  checked: boolean;
-  error?: null | string;
-};
-
-export type FilterType = 'active' | 'all' | 'completed';
 
 type InitialState = {
   tasks: TaskType[];

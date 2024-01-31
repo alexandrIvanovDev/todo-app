@@ -1,9 +1,11 @@
 import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { changeTheme } from 'src/store/reducers/todo.ts';
-
-import { Theme, ThemeContext } from './ThemeContext.ts';
+import {
+  Theme,
+  ThemeContext,
+} from 'src/app/providers/themeProvider/ThemeContext.ts';
+import { changeTheme } from 'src/services/todo.ts';
 
 type UseThemeResult = {
   theme: Theme;

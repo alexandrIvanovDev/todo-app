@@ -1,9 +1,8 @@
 import { Provider } from 'react-redux';
 
 import { fireEvent, render, screen } from '@testing-library/react';
+import { store } from 'src/app/providers/store/store.ts';
 import { describe, expect, test } from 'vitest';
-
-import { store } from 'src/store/store.ts';
 
 import { TextField } from './TextField.tsx';
 

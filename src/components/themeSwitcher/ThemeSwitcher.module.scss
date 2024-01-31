@@ -1,6 +1,13 @@
+@import 'src/app/styles/mixins';
+
 .btn {
+  @include flex;
   background: inherit;
   cursor: pointer;
   border: none;
   outline: none;
+
+  .icon {
+    fill: #fff;
+  }
 }

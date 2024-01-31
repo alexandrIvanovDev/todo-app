@@ -1,8 +1,8 @@
-@import '../../styles/mixin';
+@import 'src/app/styles/mixins';
 
 .content {
   border-radius: 0.5rem;
-  @include flex(column);
+  @include flex(column, center, stretch);
 
   .tasksWrapper {
     padding: 1px 1px 0 1px;

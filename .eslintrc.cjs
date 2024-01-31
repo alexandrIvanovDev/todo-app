@@ -61,5 +61,6 @@ module.exports = {
         'order': 'asc',
       },
     ],
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
 };

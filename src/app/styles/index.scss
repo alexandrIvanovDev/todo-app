@@ -21,8 +21,12 @@ option {
 }
 
 :root {
+  // fonts
   font-family: 'Josefin Sans Variable', sans-serif;
   font-size: 18px;
+
+  // sizes
+  --container-width: 600px;
 }
 
 .app {

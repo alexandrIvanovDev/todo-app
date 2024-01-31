@@ -1,8 +1,8 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addTask, setError } from 'src/store/reducers/todo.ts';
-import { useAppSelector } from 'src/store/store.ts';
+import { useAppSelector } from 'src/app/providers/store/store.ts';
+import { addTask, setError } from 'src/services/todo.ts';
 
 import cl from './TextField.module.scss';
 
@@ -33,8 +33,7 @@ export const TextField = () => {
   };
 
   return (
-    <div className={cl.wrapper}>
-      {error && <div className={cl.error}>{error}</div>}
+    <>
       <div className={cl.inputWrapper}>
         <div className={cl.circle}></div>
         <input
@@ -46,7 +45,8 @@ export const TextField = () => {
           onChange={onInputHandler}
           placeholder='Create a new todo...'
         />
+        {error && <div className={cl.error}>{error}</div>}
       </div>
-    </div>
+    </>
   );
 };

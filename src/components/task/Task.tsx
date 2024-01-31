@@ -1,25 +1,25 @@
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 
 import classNames from 'classnames';
-import deleteIcon from 'src/assets/images/icon-cross.svg';
+import { TaskType } from 'src/app/providers/store/types.ts';
+import { CrossIcon } from 'src/assets/icons/cross.tsx';
+import { changeTaskStatus, deleteTask } from 'src/services/todo.ts';
 
 import { Checkbox } from 'src/components/checkbox';
 import { TaskTitle } from 'src/components/taskTitle';
-import { TaskType, changeTaskStatus, deleteTask } from 'src/store/reducers/todo.ts';
 
 import cl from './Task.module.scss';
 
-type PropsType = {
+type Props = {
   task: TaskType;
   index: number;
 };
 
-export const Task: FC<PropsType> = ({ task, index }) => {
+export const Task = ({ task, index }: Props) => {
   const [value, setValue] = useState(task.text);
   const [isChecked, setIsChecked] = useState(task.checked);
-  const [isShowIcon, setIsShowIcon] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -35,8 +35,6 @@ export const Task: FC<PropsType> = ({ task, index }) => {
       {(provided) => (
         <div
           ref={provided.innerRef}
-          onMouseEnter={() => setIsShowIcon(true)}
-          onMouseLeave={() => setIsShowIcon(false)}
           className={classNames(cl.wrapper, { [cl.isDone]: isChecked })}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
@@ -49,14 +47,10 @@ export const Task: FC<PropsType> = ({ task, index }) => {
 
           <TaskTitle task={task} value={value} setValue={setValue} />
 
-          {isShowIcon && (
-            <img
-              alt='delete'
-              src={deleteIcon}
-              className={cl.deleteIcon}
-              onClick={() => dispatch(deleteTask(task.id))}
-            />
-          )}
+          <CrossIcon
+            className={cl.deleteIcon}
+            onClick={() => dispatch(deleteTask(task.id))}
+          />
         </div>
       )}
     </Draggable>

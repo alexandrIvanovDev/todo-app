@@ -1,15 +1,31 @@
-@import '../../styles/mixin';
+@import 'src/app/styles/mixins';
 
 .wrapper {
+  @include flex(row, flex-start);
+
+  position: relative;
   background: var(--bg-task-color);
   padding: 1rem;
-  @include flex(row, '', center);
   border-bottom: 1px solid var(--checkbox-border-color);
   color: var(--font-color);
   cursor: grab;
 
+  &:hover .deleteIcon {
+    display: block;
+  }
+
   .deleteIcon {
+    position: absolute;
+    right: 20px;
+    top: 22px;
     cursor: pointer;
+    display: none;
+    fill: var(--filter-color);
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+      fill: var(--color-hover);
+    }
   }
 }
 

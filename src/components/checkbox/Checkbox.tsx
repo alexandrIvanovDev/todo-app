@@ -1,6 +1,6 @@
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent } from 'react';
 
-import { TaskType } from 'src/store/reducers/todo.ts';
+import { TaskType } from 'src/app/providers/store/types.ts';
 
 import cl from './Checkbox.module.scss';
 
@@ -10,7 +10,7 @@ type Props = {
   onCheckboxHandler: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export const Checkbox: FC<Props> = ({ task, isChecked, onCheckboxHandler }) => {
+export const Checkbox = ({ task, isChecked, onCheckboxHandler }: Props) => {
   return (
     <>
       <input

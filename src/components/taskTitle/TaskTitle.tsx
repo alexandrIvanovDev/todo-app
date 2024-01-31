@@ -1,21 +1,18 @@
-import { ChangeEvent, FC, KeyboardEvent, useEffect, useState } from 'react';
+import { ChangeEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-  TaskType,
-  changeTaskText,
-  setTaskError,
-} from 'src/store/reducers/todo.ts';
+import { TaskType } from 'src/app/providers/store/types.ts';
+import { changeTaskText, setTaskError } from 'src/services/todo.ts';
 
 import cl from './TaskTitle.module.scss';
 
-type TaskTitle = {
+type Props = {
   task: TaskType;
   value: string;
   setValue: (value: string) => void;
 };
 
-export const TaskTitle: FC<TaskTitle> = ({ task, value, setValue }) => {
+export const TaskTitle = ({ task, value, setValue }: Props) => {
   const [editMode, setEditMode] = useState(false);
   const dispatch = useDispatch();
 
@@ -24,10 +21,6 @@ export const TaskTitle: FC<TaskTitle> = ({ task, value, setValue }) => {
       dispatch(setTaskError({ id: task.id, error: null }));
     }
   };
-
-  useEffect(() => {
-    setErrorNull();
-  }, []);
 
   const onChangeValue = (e: ChangeEvent<HTMLInputElement>) => {
     setErrorNull();
@@ -50,6 +43,12 @@ export const TaskTitle: FC<TaskTitle> = ({ task, value, setValue }) => {
       setEditMode(true);
     }
   };
+
+  useEffect(() => {
+    if (task.error) {
+      setErrorNull();
+    }
+  }, []);
 
   return (
     <>
